@@ -1,36 +1,33 @@
 const express = require('express')
-const app = express()
-const PORT = 3000
-
-const a = 12
-const b = 5
-
-app.get('/', (req, res) => {
-  res.send("Menu:"+ `<br>` + "/1 : Suma" + `<br>` + " /2 : Resta" + `<br>` + " /3 : Multiplicacion" + `<br>` + " /4 : Division")
-})
+const router = express.Router()
 
 
-app.get('/1', (req, res) => {
-  const suma = a + b
+router.get('/suma/:n1/:n2', (req, res) => {
+  const n1 = Number(req.params.n1)
+  const n2 = Number(req.params.n2)
+  const suma = n1 + n2
   res.send(suma)
 })
 
-app.get('/2', (req, res) => {
-  const resta = a - b
+router.get('/resta/:n1/:n2', (req, res) => {
+  const n1 = Number(req.params.n1)
+  const n2 = Number(req.params.n2)
+  const resta = n1 - n2
   res.send(resta)
 })
   
-app.get('/3', (req, res) => {
-  const multiplicacion = a * b
+router.get('/multiplicacion/:n1/:n2', (req, res) => {
+  const n1 = Number(req.params.n1)
+  const n2 = Number(req.params.n2)
+  const multiplicacion = n1 * n2
   res.send(multiplicacion)
 })
 
-app.get('/4', (req, res) => {
-  const division = a / b
+router.get('/division/:n1/:n2', (req, res) => {
+  const n1 = Number(req.params.n1)
+  const n2 = Number(req.params.n2)
+  const division = n1 / n2
   res.send(division)
 })
 
-
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-})
+module.exports = router
